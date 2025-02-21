@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:themoviesapp/features/movies/presentation/pages/movies_screen.dart';
 
 Future main() async {
@@ -9,7 +10,11 @@ Future main() async {
     'TMDB_API_KEY': '',
   });
 
-  runApp(const MyApp());
+  runApp(
+    ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
