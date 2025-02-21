@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:themoviesapp/features/movies/presentation/pages/movies_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +18,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'The Movie App',
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Movies'),
-          ),
-          body: Text("")),
+      debugShowCheckedModeBanner: false,
+      home: MoviesScreen(),
     );
   }
 }
