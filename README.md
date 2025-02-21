@@ -49,7 +49,7 @@ lib/
 - **Local**: Hive para almacenamiento en caché.
 
 ## 🔧 Configuración de API Key
-1. Crear un archivo `.env` en la raíz del proyecto.
+1. Crear un archivo `.env` en la carpeta assets del proyecto.
 2. Agregar la clave de API:
 ```sh
 TMDB_API_KEY=tu_api_key
