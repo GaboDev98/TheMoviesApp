@@ -11,7 +11,7 @@ class MovieRepository {
       {int page = 1}) async {
     try {
       final response = await remoteDataSource.getPopularMovies(page: page);
-      return Right(response.results);
+      return Right(response.results ?? []);
     } catch (e) {
       return Left('Error al obtener películas: $e');
     }

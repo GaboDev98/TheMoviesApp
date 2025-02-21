@@ -8,12 +8,12 @@ part of 'movie_response.dart';
 
 _$MovieResponseImpl _$$MovieResponseImplFromJson(Map<String, dynamic> json) =>
     _$MovieResponseImpl(
-      page: (json['page'] as num).toInt(),
-      results: (json['results'] as List<dynamic>)
-          .map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
+      page: (json['page'] as num?)?.toInt(),
+      results: (json['results'] as List<dynamic>?)
+          ?.map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalPages: (json['totalPages'] as num).toInt(),
-      totalResults: (json['totalResults'] as num).toInt(),
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalResults: (json['totalResults'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$MovieResponseImplToJson(_$MovieResponseImpl instance) =>

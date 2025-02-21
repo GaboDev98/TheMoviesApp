@@ -7,10 +7,10 @@ part 'movie_response.g.dart';
 @freezed
 class MovieResponse with _$MovieResponse {
   const factory MovieResponse({
-    required int page,
-    required List<MovieModel> results,
-    required int totalPages,
-    required int totalResults,
+    int? page,
+    List<MovieModel>? results,
+    int? totalPages,
+    int? totalResults,
   }) = _MovieResponse;
 
   factory MovieResponse.fromJson(Map<String, dynamic> json) =>

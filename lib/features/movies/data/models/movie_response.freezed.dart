@@ -20,10 +20,10 @@ MovieResponse _$MovieResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MovieResponse {
-  int get page => throw _privateConstructorUsedError;
-  List<MovieModel> get results => throw _privateConstructorUsedError;
-  int get totalPages => throw _privateConstructorUsedError;
-  int get totalResults => throw _privateConstructorUsedError;
+  int? get page => throw _privateConstructorUsedError;
+  List<MovieModel>? get results => throw _privateConstructorUsedError;
+  int? get totalPages => throw _privateConstructorUsedError;
+  int? get totalResults => throw _privateConstructorUsedError;
 
   /// Serializes this MovieResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,10 @@ abstract class $MovieResponseCopyWith<$Res> {
       _$MovieResponseCopyWithImpl<$Res, MovieResponse>;
   @useResult
   $Res call(
-      {int page, List<MovieModel> results, int totalPages, int totalResults});
+      {int? page,
+      List<MovieModel>? results,
+      int? totalPages,
+      int? totalResults});
 }
 
 /// @nodoc
@@ -60,28 +63,28 @@ class _$MovieResponseCopyWithImpl<$Res, $Val extends MovieResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? page = null,
-    Object? results = null,
-    Object? totalPages = null,
-    Object? totalResults = null,
+    Object? page = freezed,
+    Object? results = freezed,
+    Object? totalPages = freezed,
+    Object? totalResults = freezed,
   }) {
     return _then(_value.copyWith(
-      page: null == page
+      page: freezed == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      results: null == results
+              as int?,
+      results: freezed == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<MovieModel>,
-      totalPages: null == totalPages
+              as List<MovieModel>?,
+      totalPages: freezed == totalPages
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalResults: null == totalResults
+              as int?,
+      totalResults: freezed == totalResults
           ? _value.totalResults
           : totalResults // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -95,7 +98,10 @@ abstract class _$$MovieResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int page, List<MovieModel> results, int totalPages, int totalResults});
+      {int? page,
+      List<MovieModel>? results,
+      int? totalPages,
+      int? totalResults});
 }
 
 /// @nodoc
@@ -111,28 +117,28 @@ class __$$MovieResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? page = null,
-    Object? results = null,
-    Object? totalPages = null,
-    Object? totalResults = null,
+    Object? page = freezed,
+    Object? results = freezed,
+    Object? totalPages = freezed,
+    Object? totalResults = freezed,
   }) {
     return _then(_$MovieResponseImpl(
-      page: null == page
+      page: freezed == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      results: null == results
+              as int?,
+      results: freezed == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<MovieModel>,
-      totalPages: null == totalPages
+              as List<MovieModel>?,
+      totalPages: freezed == totalPages
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalResults: null == totalResults
+              as int?,
+      totalResults: freezed == totalResults
           ? _value.totalResults
           : totalResults // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -141,29 +147,31 @@ class __$$MovieResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MovieResponseImpl implements _MovieResponse {
   const _$MovieResponseImpl(
-      {required this.page,
-      required final List<MovieModel> results,
-      required this.totalPages,
-      required this.totalResults})
+      {this.page,
+      final List<MovieModel>? results,
+      this.totalPages,
+      this.totalResults})
       : _results = results;
 
   factory _$MovieResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieResponseImplFromJson(json);
 
   @override
-  final int page;
-  final List<MovieModel> _results;
+  final int? page;
+  final List<MovieModel>? _results;
   @override
-  List<MovieModel> get results {
+  List<MovieModel>? get results {
+    final value = _results;
+    if (value == null) return null;
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final int totalPages;
+  final int? totalPages;
   @override
-  final int totalResults;
+  final int? totalResults;
 
   @override
   String toString() {
@@ -206,22 +214,22 @@ class _$MovieResponseImpl implements _MovieResponse {
 
 abstract class _MovieResponse implements MovieResponse {
   const factory _MovieResponse(
-      {required final int page,
-      required final List<MovieModel> results,
-      required final int totalPages,
-      required final int totalResults}) = _$MovieResponseImpl;
+      {final int? page,
+      final List<MovieModel>? results,
+      final int? totalPages,
+      final int? totalResults}) = _$MovieResponseImpl;
 
   factory _MovieResponse.fromJson(Map<String, dynamic> json) =
       _$MovieResponseImpl.fromJson;
 
   @override
-  int get page;
+  int? get page;
   @override
-  List<MovieModel> get results;
+  List<MovieModel>? get results;
   @override
-  int get totalPages;
+  int? get totalPages;
   @override
-  int get totalResults;
+  int? get totalResults;
 
   /// Create a copy of MovieResponse
   /// with the given fields replaced by the non-null parameter values.

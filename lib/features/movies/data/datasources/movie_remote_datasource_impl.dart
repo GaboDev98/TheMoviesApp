@@ -5,8 +5,9 @@ import 'package:themoviesapp/features/movies/data/models/movie_response.dart';
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   final Dio dio;
-  final String apiKey = dotenv.env['API_KEY'] ?? '';
+  final String apiKey = dotenv.env['TMDB_API_KEY'] ?? '';
   final String baseUrl = dotenv.env['BASE_URL'] ?? '';
+  final String bearerToken = dotenv.env['BEARER_TOKEN'] ?? '';
 
   MovieRemoteDataSourceImpl(this.dio);
 
@@ -14,12 +15,18 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   Future<MovieResponse> getPopularMovies({int page = 1}) async {
     try {
       final response = await dio.get(
-        '$baseUrl/movie/popular',
+        '$baseUrl/account/5e472f121e9225001abebb6f/movie/recommendations',
         queryParameters: {
           'api_key': apiKey,
-          'language': 'es-ES',
+          'language': 'en-US',
           'page': page,
         },
+        options: Options(
+          headers: {
+            'accept': 'application/json',
+            'Authorization': 'Bearer $bearerToken',
+          },
+        ),
       );
 
       return MovieResponse.fromJson(response.data);
