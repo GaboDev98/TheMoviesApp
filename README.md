@@ -1,18 +1,19 @@
-# 📽️ Flutter Movies App
+# 🎬 Flutter Movies App
 
-Una aplicación en Flutter para listar películas y ver sus detalles, implementando Clean Architecture y gestionando datos de forma local y remota mediante data sources.
+Una aplicación en Flutter para listar películas populares y ver sus detalles, utilizando The Movie Database (TMDB) API. Implementa Clean Architecture y maneja datos de forma local y remota.
 
 ## 📌 Características
-- Listado de películas populares
-- Vista detallada de cada película
-- Gestión de datos desde una API remota y almacenamiento local
-- Implementación de Clean Architecture con separación en capas
+- Listado de películas populares obtenidas desde TMDB API.
+- Vista detallada de cada película con información relevante.
+- Gestión de estados con Riverpod.
+- Manejo de errores y almacenamiento en caché con Hive.
+- Arquitectura modular basada en Clean Architecture.
 
 ## 🏗️ Arquitectura
-La aplicación sigue la **Clean Architecture**, separando la lógica en:
-- **Presentación**: UI y manejo de estados con Provider o Riverpod
-- **Dominio**: Casos de uso e interfaces de repositorios
-- **Datos**: Implementaciones de los repositorios con data sources remotos y locales
+La aplicación sigue la **Clean Architecture**, dividiendo la lógica en capas:
+- **Presentación**: UI y manejo de estados con Riverpod.
+- **Dominio**: Casos de uso y abstracciones de repositorios.
+- **Datos**: Implementaciones de repositorios con data sources remotos y locales.
 
 ### 📂 Estructura de Carpetas
 ```
@@ -44,10 +45,18 @@ lib/
 ```
 
 ## 📡 Fuentes de Datos
-- **Remoto**: API de películas (Ejemplo: The Movie Database API)
-- **Local**: SQLite o Hive para almacenamiento en caché
+- **Remoto**: The Movie Database (TMDB) API.
+- **Local**: Hive para almacenamiento en caché.
 
-## 🚀 Instalación
+## 🔧 Configuración de API Key
+1. Crear un archivo `.env` en la raíz del proyecto.
+2. Agregar la clave de API:
+```sh
+TMDB_API_KEY=tu_api_key
+```
+3. Asegurar que el archivo `.env` está en el `.gitignore`.
+
+## 🚀 Instalación y Ejecución
 ```sh
 git clone https://github.com/tu_usuario/flutter_movies.git
 cd flutter_movies
@@ -60,11 +69,12 @@ flutter run
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^6.0.5
-  dio: ^5.0.0
+  flutter_riverpod: ^2.6.1
+  dio: ^5.8.0+1
   hive: ^2.2.3
-  get_it: ^7.2.0
-  json_serializable: ^6.6.1
+  get_it: ^8.0.3
+  json_serializable: ^6.9.4
+  flutter_dotenv: ^5.2.1
 ```
 
 ## 📄 Licencia
