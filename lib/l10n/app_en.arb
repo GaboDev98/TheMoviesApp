@@ -1,0 +1,9 @@
+{
+  "@@locale": "en",
+  "popular_movies": "Popular Movies",
+  "movie_detail": "Movie Detail",
+  "release_date": "Release Date: {date}",
+  "description": "Description",
+  "no_description": "No description available.",
+  "untitled": "Untitled"
+}

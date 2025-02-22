@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MovieInfo extends StatelessWidget {
   final String? title;
@@ -6,24 +7,27 @@ class MovieInfo extends StatelessWidget {
   final String? releaseDate;
   final String? overview;
 
-  const MovieInfo(
-      {super.key,
-      required this.title,
-      required this.voteAverage,
-      required this.releaseDate,
-      this.overview});
+  const MovieInfo({
+    super.key,
+    required this.title,
+    required this.voteAverage,
+    required this.releaseDate,
+    this.overview,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title ?? 'Sin título',
-          style: const TextStyle(
+          title ?? localizations.untitled,
+          style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Theme.of(context).textTheme.titleLarge?.color,
           ),
         ),
         const SizedBox(height: 8),
@@ -33,25 +37,34 @@ class MovieInfo extends StatelessWidget {
             const SizedBox(width: 5),
             Text(
               voteAverage.toString(),
-              style: const TextStyle(fontSize: 18, color: Colors.black),
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Theme.of(context).textTheme.titleLarge?.color),
             ),
           ],
         ),
         const SizedBox(height: 8),
         Text(
-          'Fecha de estreno: ${releaseDate ?? "Desconocida"}',
-          style: const TextStyle(fontSize: 16, color: Colors.black),
+          localizations.release_date(releaseDate ?? localizations.untitled),
+          style: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).textTheme.titleLarge?.color),
         ),
         const SizedBox(height: 16),
         Text(
-          'Descripción',
+          localizations.description,
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).textTheme.titleLarge?.color,
+          ),
         ),
         const SizedBox(height: 8),
         Text(
-          overview ?? 'No hay descripción disponible.',
-          style: const TextStyle(fontSize: 16, color: Colors.black),
+          overview ?? localizations.no_description,
+          style: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).textTheme.titleLarge?.color),
           textAlign: TextAlign.justify,
         ),
       ],

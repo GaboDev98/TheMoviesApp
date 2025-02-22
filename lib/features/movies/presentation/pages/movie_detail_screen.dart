@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/features/movies/domain/entities/movie.dart';
 import 'package:movies/features/movies/presentation/widgets/movie_info.dart';
 import 'package:movies/features/movies/presentation/widgets/movie_backdrop.dart';
@@ -10,9 +11,16 @@ class MovieDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(title: Text('Detalle de la película')),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+          title: Text(localizations.movie_detail,
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).textTheme.titleLarge?.color,
+              ))),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

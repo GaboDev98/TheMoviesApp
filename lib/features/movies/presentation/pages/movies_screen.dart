@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movies/features/movies/domain/entities/movie.dart';
-import 'package:movies/features/movies/presentation/providers/movie_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/features/movies/presentation/widgets/movie_poster.dart';
+import 'package:movies/features/movies/presentation/providers/movie_provider.dart';
 
 class MoviesScreen extends ConsumerStatefulWidget {
   const MoviesScreen({super.key});
@@ -38,10 +38,19 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     final movieState = ref.watch(movieProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Películas Populares')),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+          title: Text(localizations.popular_movies,
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).textTheme.titleLarge?.color,
+              ))),
       body: RefreshIndicator(
         onRefresh: () async {
           await ref.read(movieProvider.notifier).fetchPopularMovies();
