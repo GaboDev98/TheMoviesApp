@@ -49,17 +49,34 @@ final movieProvider = StateNotifierProvider<MovieNotifier, MovieState>((ref) {
 
 class MovieNotifier extends StateNotifier<MovieState> {
   final GetPopularMovies getPopularMovies;
+  int _currentPage = 1;
+  bool _isFetching = false;
 
   MovieNotifier(this.getPopularMovies) : super(MovieState());
 
-  Future<void> fetchPopularMovies() async {
-    state = MovieState(isLoading: true);
+  Future<void> fetchPopularMovies({bool isLoadMore = false}) async {
+    if (_isFetching) return;
+    _isFetching = true;
 
-    final Either<String, List<Movie>> result = await getPopularMovies();
+    if (!isLoadMore) {
+      _currentPage = 1;
+      state = MovieState(isLoading: true, movies: []);
+    }
+
+    final result = await getPopularMovies(page: _currentPage);
 
     result.fold(
-      (error) => state = MovieState(error: error),
-      (movies) => state = MovieState(movies: movies),
+      (error) => state = MovieState(error: error, movies: state.movies),
+      (movies) {
+        if (isLoadMore) {
+          state = MovieState(movies: [...state.movies, ...movies]);
+        } else {
+          state = MovieState(movies: movies);
+        }
+        _currentPage++;
+      },
     );
+
+    _isFetching = false;
   }
 }

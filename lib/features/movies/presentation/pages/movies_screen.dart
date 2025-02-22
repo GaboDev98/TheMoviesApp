@@ -13,11 +13,27 @@ class MoviesScreen extends ConsumerStatefulWidget {
 }
 
 class _MoviesScreenState extends ConsumerState<MoviesScreen> {
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
     Future.microtask(
         () => ref.read(movieProvider.notifier).fetchPopularMovies());
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 200) {
+      ref.read(movieProvider.notifier).fetchPopularMovies(isLoadMore: true);
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -30,32 +46,28 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
         onRefresh: () async {
           await ref.read(movieProvider.notifier).fetchPopularMovies();
         },
-        child: movieState.isLoading
+        child: movieState.isLoading && movieState.movies.isEmpty
             ? const Center(child: CircularProgressIndicator())
-            : movieState.error != null
-                ? Center(child: Text('Error: ${movieState.error}'))
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
-                          childAspectRatio: 0.6,
-                        ),
-                        itemCount: movieState.movies.length,
-                        itemBuilder: (context, index) {
-                          final Movie movie = movieState.movies[index];
-
-                          return MoviePoster(
-                            posterPath: movie.posterPath,
-                            onTap: () {
-                              context.push('/detail_movie', extra: movie);
-                            },
-                          );
-                        }),
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  controller: _scrollController,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 0.6,
                   ),
+                  itemCount: movieState.movies.length,
+                  itemBuilder: (context, index) {
+                    final movie = movieState.movies[index];
+                    return MoviePoster(
+                      posterPath: movie.posterPath,
+                      onTap: () => context.push('/detail_movie', extra: movie),
+                    );
+                  },
+                ),
+              ),
       ),
     );
   }

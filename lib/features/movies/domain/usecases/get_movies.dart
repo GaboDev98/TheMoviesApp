@@ -7,7 +7,7 @@ class GetPopularMovies {
 
   GetPopularMovies(this.repository);
 
-  Future<Either<String, List<Movie>>> call() async {
-    return await repository.getPopularMovies();
+  Future<Either<String, List<Movie>>> call({int page = 1}) {
+    return repository.getPopularMovies(page: page);
   }
 }

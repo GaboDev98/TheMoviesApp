@@ -16,13 +16,17 @@ class MovieRepositoryImpl implements MovieRepository {
       final response = await remoteDataSource.getPopularMovies(page: page);
       final movies = response.results ?? [];
 
-      await localDataSource.cacheMovies(movies);
+      if (page == 1) {
+        await localDataSource.cacheMovies(movies);
+      }
 
       return Right(movies.map((movie) => movie.toEntity()).toList());
     } catch (e) {
-      final cachedMovies = await localDataSource.getCachedMovies();
-      if (cachedMovies.isNotEmpty) {
-        return Right(cachedMovies.map((movie) => movie.toEntity()).toList());
+      if (page == 1) {
+        final cachedMovies = await localDataSource.getCachedMovies();
+        if (cachedMovies.isNotEmpty) {
+          return Right(cachedMovies.map((movie) => movie.toEntity()).toList());
+        }
       }
       return Left('Error al obtener películas: $e');
     }
