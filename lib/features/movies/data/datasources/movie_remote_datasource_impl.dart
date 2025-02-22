@@ -1,7 +1,8 @@
+import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:movies/features/movies/data/datasources/movie_remote_data_source.dart';
 import 'package:movies/features/movies/data/models/movie_response.dart';
+import 'package:movies/features/movies/data/datasources/movie_remote_data_source.dart';
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   final Dio dio;
@@ -14,11 +15,19 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   @override
   Future<MovieResponse> getPopularMovies({int page = 1}) async {
     try {
+      String systemLanguage = PlatformDispatcher.instance.locale.languageCode;
+
+      const supportedLanguages = ['en', 'es'];
+
+      String language = supportedLanguages.contains(systemLanguage)
+          ? '$systemLanguage-US'
+          : 'en-US';
+
       final response = await dio.get(
         '$baseUrl/account/5e472f121e9225001abebb6f/movie/recommendations',
         queryParameters: {
           'api_key': apiKey,
-          'language': 'en-US',
+          'language': language,
           'page': page,
         },
         options: Options(
