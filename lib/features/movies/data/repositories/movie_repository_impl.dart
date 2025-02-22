@@ -14,7 +14,9 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<String, List<Movie>>> getPopularMovies({int page = 1}) async {
     try {
       final response = await remoteDataSource.getPopularMovies(page: page);
-      final movies = response.results ?? [];
+      var movies = response.results ?? [];
+      
+      movies.sort((a, b) => a.id.compareTo(b.id));
 
       if (page == 1) {
         await localDataSource.cacheMovies(movies);
