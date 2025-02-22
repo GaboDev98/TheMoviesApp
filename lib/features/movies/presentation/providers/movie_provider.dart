@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies/features/movies/domain/entities/movie.dart';
+import 'package:movies/features/movies/domain/usecases/get_movies.dart';
 import 'package:movies/features/movies/domain/repositories/movie_repository.dart';
 import 'package:movies/features/movies/data/repositories/movie_repository_impl.dart';
 import 'package:movies/features/movies/data/datasources/movie_local_data_source.dart';
 import 'package:movies/features/movies/data/datasources/movie_remote_data_source.dart';
 import 'package:movies/features/movies/data/datasources/movie_local_datasource_impl.dart';
 import 'package:movies/features/movies/data/datasources/movie_remote_datasource_impl.dart';
-import 'package:movies/features/movies/domain/usecases/get_movies.dart';
 
 class MovieState {
   final bool isLoading;
