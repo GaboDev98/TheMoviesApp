@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:themoviesapp/features/movies/data/datasources/movie_remote_data_source.dart';
-import 'package:themoviesapp/features/movies/data/models/movie_response.dart';
+import 'package:movies/features/movies/data/datasources/movie_remote_data_source.dart';
+import 'package:movies/features/movies/data/models/movie_response.dart';
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   final Dio dio;

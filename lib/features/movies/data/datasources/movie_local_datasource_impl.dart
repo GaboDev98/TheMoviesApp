@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:themoviesapp/features/movies/data/models/movie_model.dart';
-import 'package:themoviesapp/features/movies/data/datasources/movie_local_data_source.dart';
+import 'package:movies/features/movies/data/models/movie_model.dart';
+import 'package:movies/features/movies/data/datasources/movie_local_data_source.dart';
 
 class MovieLocalDataSourceImpl implements MovieLocalDataSource {
   static const String _boxName = 'moviesBox';

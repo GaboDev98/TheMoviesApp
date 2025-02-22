@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
-import 'package:themoviesapp/features/movies/domain/repositories/movie_repository.dart';
+import 'package:movies/features/movies/domain/entities/movie.dart';
+import 'package:movies/features/movies/domain/repositories/movie_repository.dart';
 
 class GetPopularMovies {
   final MovieRepository repository;

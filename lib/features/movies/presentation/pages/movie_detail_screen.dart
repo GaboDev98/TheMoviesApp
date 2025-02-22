@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
-import 'package:themoviesapp/features/movies/presentation/widgets/movie_info.dart';
-import 'package:themoviesapp/features/movies/presentation/widgets/movie_backdrop.dart';
+import 'package:movies/features/movies/domain/entities/movie.dart';
+import 'package:movies/features/movies/presentation/widgets/movie_info.dart';
+import 'package:movies/features/movies/presentation/widgets/movie_backdrop.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Movie movie;

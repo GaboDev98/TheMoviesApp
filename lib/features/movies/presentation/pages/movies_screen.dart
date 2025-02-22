@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
-import 'package:themoviesapp/features/movies/presentation/providers/movie_provider.dart';
-import 'package:themoviesapp/features/movies/presentation/widgets/movie_poster.dart';
+import 'package:movies/features/movies/domain/entities/movie.dart';
+import 'package:movies/features/movies/presentation/providers/movie_provider.dart';
+import 'package:movies/features/movies/presentation/widgets/movie_poster.dart';
 
 class MoviesScreen extends ConsumerStatefulWidget {
   const MoviesScreen({super.key});

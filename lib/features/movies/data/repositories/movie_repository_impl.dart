@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
-import 'package:themoviesapp/features/movies/domain/repositories/movie_repository.dart';
-import 'package:themoviesapp/features/movies/data/datasources/movie_local_data_source.dart';
-import 'package:themoviesapp/features/movies/data/datasources/movie_remote_data_source.dart';
+import 'package:movies/features/movies/domain/entities/movie.dart';
+import 'package:movies/features/movies/domain/repositories/movie_repository.dart';
+import 'package:movies/features/movies/data/datasources/movie_local_data_source.dart';
+import 'package:movies/features/movies/data/datasources/movie_remote_data_source.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;

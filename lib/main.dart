@@ -3,10 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
-import 'package:themoviesapp/features/movies/data/models/movie_model.dart';
-import 'package:themoviesapp/features/movies/presentation/pages/movies_screen.dart';
-import 'package:themoviesapp/features/movies/presentation/pages/movie_detail_screen.dart';
+import 'package:movies/features/movies/domain/entities/movie.dart';
+import 'package:movies/features/movies/data/models/movie_model.dart';
+import 'package:movies/features/movies/presentation/pages/movies_screen.dart';
+import 'package:movies/features/movies/presentation/pages/movie_detail_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
