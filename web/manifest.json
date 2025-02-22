@@ -1,6 +1,6 @@
 {
-    "name": "themoviesapp",
-    "short_name": "themoviesapp",
+    "name": "movies",
+    "short_name": "movies",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#hexcode",
