@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:themoviesapp/features/movies/data/models/movie_model.dart';
+import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
 import 'package:themoviesapp/features/movies/presentation/providers/movie_provider.dart';
 import 'package:themoviesapp/features/movies/presentation/widgets/movie_poster.dart';
 
@@ -46,13 +46,12 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                         ),
                         itemCount: movieState.movies.length,
                         itemBuilder: (context, index) {
-                          final MovieModel movie = movieState.movies[index];
+                          final Movie movie = movieState.movies[index];
 
                           return MoviePoster(
                             posterPath: movie.posterPath,
                             onTap: () {
-                              context.push('/detail_movie',
-                                  extra: movie.toJson());
+                              context.push('/detail_movie', extra: movie);
                             },
                           );
                         }),

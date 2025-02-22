@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:themoviesapp/features/movies/data/models/movie_model.dart';
+import 'package:themoviesapp/features/movies/domain/entities/movie.dart';
 import 'package:themoviesapp/features/movies/presentation/widgets/movie_info.dart';
 import 'package:themoviesapp/features/movies/presentation/widgets/movie_backdrop.dart';
 
 class MovieDetailScreen extends StatelessWidget {
-  final MovieModel movie;
+  final Movie movie;
 
   const MovieDetailScreen({super.key, required this.movie});
 
@@ -18,7 +18,7 @@ class MovieDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MovieBackdrop(
-              backdropPath: movie.backdropPath,
+              backdropPath: movie.posterPath,
               movieId: movie.id,
             ),
             Padding(

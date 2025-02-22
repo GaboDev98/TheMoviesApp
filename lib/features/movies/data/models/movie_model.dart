@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'movie_model.freezed.dart';
@@ -11,24 +12,26 @@ double _toDouble(dynamic value) {
 }
 
 @freezed
+@HiveType(typeId: 0)
 class MovieModel with _$MovieModel {
   const factory MovieModel({
-    required int id,
-    String? title,
-    String? overview,
+    @HiveField(0) required int id,
+    @HiveField(1) String? title,
+    @HiveField(2) String? overview,
+    @HiveField(3)
     @JsonKey(name: 'vote_average', fromJson: _toDouble)
     required double voteAverage,
-    @JsonKey(name: 'poster_path') String? posterPath,
-    @JsonKey(name: 'backdrop_path') String? backdropPath,
-    @JsonKey(name: 'original_title') String? originalTitle,
-    @JsonKey(name: 'media_type') String? mediaType,
-    required bool adult,
-    @JsonKey(name: 'original_language') String? originalLanguage,
-    @JsonKey(name: 'genre_ids') List<int>? genreIds,
-    required double popularity,
-    @JsonKey(name: 'release_date') String? releaseDate,
-    required bool video,
-    @JsonKey(name: 'vote_count') int? voteCount,
+    @HiveField(4) @JsonKey(name: 'poster_path') String? posterPath,
+    @HiveField(5) @JsonKey(name: 'backdrop_path') String? backdropPath,
+    @HiveField(6) @JsonKey(name: 'original_title') String? originalTitle,
+    @HiveField(7) @JsonKey(name: 'media_type') String? mediaType,
+    @HiveField(8) required bool adult,
+    @HiveField(9) @JsonKey(name: 'original_language') String? originalLanguage,
+    @HiveField(10) @JsonKey(name: 'genre_ids') List<int>? genreIds,
+    @HiveField(11) required double popularity,
+    @HiveField(12) @JsonKey(name: 'release_date') String? releaseDate,
+    @HiveField(13) required bool video,
+    @HiveField(14) @JsonKey(name: 'vote_count') int? voteCount,
   }) = _MovieModel;
 
   factory MovieModel.fromJson(Map<String, dynamic> json) =>
